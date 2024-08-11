@@ -11,6 +11,8 @@ def text_calculator(file):
         for character in line.split():
             characters += len(character)
     text.close()
-    return f"words count is: {words},\ncharacters count is: {characters},\nlines count is: {lines}."
-print(text_calculator("peterrabbitcopy.txt"))
+    new_file = open("new_output.txt","w")
+    new_file.write(f"lines are {lines},\nwords are {words},\ncharacters are {characters}.")
+    new_file.close()
+text_calculator("peterrabbitcopy.txt")
 
