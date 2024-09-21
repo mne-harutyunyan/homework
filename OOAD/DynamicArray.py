@@ -1,4 +1,4 @@
-from typing import List , Optional, Any, Iterator
+from typing import Any, Iterator
 class DynamicArray:
     def __init__(self, capacity: int = 10) -> None:
         self.size_of_array = 0  
