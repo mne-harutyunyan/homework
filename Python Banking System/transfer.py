@@ -11,11 +11,11 @@ class TransactionManager(abc.ABC):
         ...
 
 class Transaction:
-    def __init__(self,  from_account: 'Account', to_account: Optional['Account'], amount: float, transaction_type: str, timestamp: datetime) -> None:
+    def __init__(self,  from_account: 'Account', to_account: Optional['Account'], amount: float, transaction_type: str) -> None:
         self.__from_account = from_account
         self.__to_account = to_account
         self.__amount = amount
         self.__transaction_type = transaction_type
-        self.__timestamp = timestamp
+        self.__timestamp = datetime.now()
     def log(self) -> None:
-        print(f"Your {self.__amount}$ {self.__transaction_type} transaction has been executed from {self.__from_account.get_account_type()} to {self.__to_account.get_account_type()} account.")
+        print(f"Your {self.__amount}$ {self.__transaction_type} transaction has been executed from {self.__from_account.get_account_type()} to {self.__to_account.get_account_type()} account in {self.__timestamp}.")

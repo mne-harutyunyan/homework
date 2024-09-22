@@ -1,6 +1,6 @@
 
-def foo(iter1, iter2):
-    return iter1*iter2
+def foo(iter1, iter2, iter3):
+    return iter1+iter2+iter3
 
 def my_map(function:'function', *iterable)->list:
     ''' this function takes a function and an iterable, 
@@ -19,9 +19,10 @@ def my_map(function:'function', *iterable)->list:
     return result
 ls1= [1,2,3,4,5,6]
 ls2= [2,3,4,5,6,22,11,3,3,56,4]
-print(my_map(foo,ls1, ls2 ))
+ls3=[1,2,3]
+print(my_map(foo,ls1, ls2 ,ls3))
 
-help(my_map)
+# help(my_map)
     
             
     

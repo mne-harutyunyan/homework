@@ -24,6 +24,6 @@ def analyze_data(data, operation):
     }
     res= dict.get(operation)(data)
     return res
-ls=(1,2,3,4,5,6,7,8,9,6,5,5,5,5)
+ls=(1,3,5,4)
 operation=input("Enter the operation: ")
 print(analyze_data(ls,operation))

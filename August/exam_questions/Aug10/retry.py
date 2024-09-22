@@ -16,7 +16,7 @@ def retry(limit=3):
             return wrapper
         return decorator
     return delay
-
+1
 @retry(4)(2)
 def read(file_name):
     fs = open(file_name)

@@ -7,10 +7,9 @@ def process_data(file, new_file, gender):
     data = json.load(file1)
     file1.close()
     filtered_people = [person for person in data['people'] if person.get('gender') == gender]
-
     file2 = open(new_file, 'w')
-    json.dump({"people": filtered_people}, file2)
+    json.dump({"people": filtered_people}, file2, indent=2)
     file2.close()
     print("success")
 
-process_data("sample4.json","new.json","female")
+process_data("sample.json","new.json","female")

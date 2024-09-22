@@ -11,6 +11,7 @@ if __name__ == "__main__":
     customer.add_account(savings_acc)
     customer.add_account(joint_acc)
     customer.view_accounts()
-    Transaction(checking_acc,savings_acc,10000,"deposit", 10).log()
+    checking_acc.deposit(1200)
+    Transaction(checking_acc,savings_acc,12000,"deposit").log()
 
     
