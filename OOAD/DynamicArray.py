@@ -8,6 +8,19 @@ class DynamicArray:
         return f"{self.array}"
     def __repr__(self) -> str:
         return f"DynamicArray({self.array})"
+    def append(self, item):
+        if self.size_of_array == self.capacity:
+            self.resize(self.capacity*2)
+        self.array[self.size_of_array] = item
+        self.size_of_array += 1
+
+    def resize(self, new_capacity):
+        new_array = new_capacity * [None]
+        for i in range(self.size_of_array):
+            new_array[i] = self.array[i]
+        self.array = new_array
+        self.capacity = new_capacity
+
     def __setitem__(self, index: int, value: Any) -> None:
         if index < 0:
             raise IndexError("Index can't be negative.")
@@ -101,11 +114,13 @@ b[0] = 1
 b[1] = -5
 b[2] = 2
 
+# st = {b,d}
+
+d.append(7)
 it = iter(d)
 print(next(it))
 print(next(it))
 print(next(it))
-
-st = {b,d}
+print(next(it))
 
 
