@@ -2,57 +2,57 @@ from typing import Any, Iterator
 class DynamicArray:
     def __init__(self, capacity: int = 10) -> None:
         self.size_of_array = 0  
-        self.capacity = capacity  
-        self.array = [None] * self.capacity
+        self.__capacity = capacity  
+        self.__array = [None] * self.__capacity
     def __str__(self) -> str:
-        return f"{self.array}"
+        return f"{self.__array}"
     def __repr__(self) -> str:
-        return f"DynamicArray({self.array})"
+        return f"DynamicArray({self.__array})"
     def append(self, item):
-        if self.size_of_array == self.capacity:
-            self.resize(self.capacity*2)
-        self.array[self.size_of_array] = item
+        if self.size_of_array == self.__capacity:
+            self.resize(self.__capacity*2)
+        self.__array[self.size_of_array] = item
         self.size_of_array += 1
 
     def resize(self, new_capacity):
         new_array = new_capacity * [None]
         for i in range(self.size_of_array):
-            new_array[i] = self.array[i]
-        self.array = new_array
-        self.capacity = new_capacity
+            new_array[i] = self.__array[i]
+        self.__array = new_array
+        self.__capacity = new_capacity
 
     def __setitem__(self, index: int, value: Any) -> None:
         if index < 0:
             raise IndexError("Index can't be negative.")
         if index > self.size_of_array:
             raise IndexError("Index is out of range.")
-        self.array[index] = value
+        self.__array[index] = value
         self.size_of_array += 1
 
     def __getitem__(self, index: int) -> Any:
         if index < 0:
             raise IndexError("Index is out of range")
-        return self.array[index]
+        return self.__array[index]
     def __len__(self) -> int:
         return self.size_of_array
     
     def __add__(self, other: 'DynamicArray') -> 'DynamicArray':
         result = DynamicArray((self.size_of_array + other.size_of_array))
         for i in range(self.size_of_array):
-            result[i] = self.array[i]
+            result[i] = self.__array[i]
         for j in range(other.size_of_array):
-            result[self.size_of_array+j] = other.array[j]
+            result[self.size_of_array+j] = other.__array[j]
         return result
     def __iadd__(self, other: 'DynamicArray') -> 'DynamicArray':
         for item in other:
-            self.array.append(item)
+            self.__array.append(item)
         return self
     
     def __ne__(self, other: 'DynamicArray') -> bool:
         if self.size_of_array != other.size_of_array:
             return True
         for i in range(self.size_of_array):
-            if self.array[i] != other.array[i]:
+            if self.__array[i] != other.__array[i]:
                 return True
         return False
 
@@ -60,25 +60,25 @@ class DynamicArray:
         if self.size_of_array != other.size_of_array:
             return False
         for i in range(self.size_of_array):
-            if self.array[i] != other.array[i]:
+            if self.__array[i] != other.__array[i]:
                 return False
         return True
 
     def __lt__(self, other: 'DynamicArray') -> bool:
         min_len = min(self.size_of_array, other.size_of_array)
         for i in range(min_len):
-            if self.array[i] < other.array[i]:
+            if self.__array[i] < other.__array[i]:
                 return True
-            elif self.array[i] > other.array[i]:
+            elif self.__array[i] > other.__array[i]:
                 return False
         return self.size_of_array < other.size_of_array
 
     def __le__(self, other: 'DynamicArray') -> bool:
         min_len = min(self.size_of_array, other.size_of_array)
         for i in range(min_len):
-            if self.array[i] < other.array[i]:
+            if self.__array[i] < other.__array[i]:
                 return True
-            elif self.array[i] > other.array[i]:
+            elif self.__array[i] > other.__array[i]:
                 return False
         return self.size_of_array <= other.size_of_array
 
@@ -97,7 +97,7 @@ class DynamicArray:
     
     def __next__(self) -> Any:
         if self.index < self.size_of_array:
-            result = self.array[self.index]
+            result = self.__array[self.index]
             self.index += 1
             return result
         else:
@@ -122,5 +122,10 @@ print(next(it))
 print(next(it))
 print(next(it))
 print(next(it))
+d.append("hello")
+d.append("hello")
+d.append("hello")
+
+print(d)
 
 
