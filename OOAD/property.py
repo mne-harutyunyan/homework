@@ -196,7 +196,7 @@ class Account:
             self.password = password
     password = PasswordValidator()
 
-hello = Account()
-hello.password = "hello87879"
-print(hello.password)
+# hello = Account()
+# hello.password = "hello87879"
+# print(hello.password)
 
