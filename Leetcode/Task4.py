@@ -35,10 +35,11 @@ from typing import List
 
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+
         nm = sum(nums)
         size = len(nums)+1
         return sum((x for x in range(size))) - nm
-    
-nums = [0,1]
+nums = [0,1,2,3,5]
 s =Solution()
 print(s.missingNumber(nums)) 

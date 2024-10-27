@@ -28,6 +28,7 @@ class Person:
         if "@" not in value or len(value) < 2:
             raise ValueError("enter valid email...")
         self.__email = value
+        
 # p = Person("Bob", 45, "mane@list.ru")
 # print(p.__slots__)
 # p.phone_number = 37477674653

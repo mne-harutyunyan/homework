@@ -14,5 +14,7 @@ def prime_generator(n):
 for i in prime_generator(100):
     print(i)
 
+
+
         
 

@@ -10,6 +10,8 @@ ls = [-76,67,43,2,1,6,-9,5,-7,3,0] # 1 milisecond
 print(BubbleSort(ls)) # 1 milisecond
 #time complexity is O(n**2)
 
+
+
 def SelectionSort(ls):
     size = len(ls) # 1 milisecond + 3 milisecond
     for i in range(size): # n milisecond
