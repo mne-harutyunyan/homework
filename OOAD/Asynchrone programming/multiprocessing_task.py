@@ -7,7 +7,6 @@
 
 import multiprocessing
 import csv
-
 def process_file(file_path, queue):
     transaction_amounts = 0.0
     with open(file_path, 'r') as file:
@@ -20,7 +19,7 @@ def process_file(file_path, queue):
 
 def aggregate_results(file_path):
     queue = multiprocessing.Queue()
-
+    dir(queue)
     process1 = multiprocessing.Process(target=process_file, args=(file1,queue))
     process2 = multiprocessing.Process(target=process_file, args=(file2,queue))
     process3 = multiprocessing.Process(target=process_file, args=(file3,queue))
