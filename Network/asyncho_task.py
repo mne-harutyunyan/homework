@@ -6,7 +6,7 @@
 # Print the extracted data after all files have been read and processed.
 # Use asyncio.gather() to read all files concurrently.
 
-import asyncio
+import asyncio, aiofile
 import json
 file = "user_data.json"
 
