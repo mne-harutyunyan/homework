@@ -1,28 +1,26 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-users = []
+memory_list = []
 class SimpleRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-Type','text/html')
         self.end_headers()
-        self.wfile.write(b'''
-                         <body>
-                         <button> click me </button>
-                         </body>
-                         ''')
+        self.wfile.write(bytes(f'''
+                         GET request recieved!
+                         {memory_list}''',encoding=("utf-8")))
+
     def do_POST(self):
         self.content_length=int(self.headers['Content-Length'])
         result = self.rfile.read(self.content_length)
         print(result)
-        user_data = json.loads(result)
-        users.append(user_data)
+        data = json.loads(result)
+        memory_list.append(data)
         self.send_response(201)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
-        response = {"Data successfully added": user_data}
+        response = {"POST request received!": data}
         self.wfile.write(json.dumps(response).encode('utf-8'))
-
 
 
 def run(server_class = HTTPServer,handler_class = SimpleRequestHandler,port=8000):

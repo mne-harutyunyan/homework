@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-memory_list = []
+any_info = []
 class SimpleRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -13,12 +13,12 @@ class SimpleRequestHandler(BaseHTTPRequestHandler):
         self.content_length=int(self.headers['Content-Length'])
         result = self.rfile.read(self.content_length)
         print(result)
-        data = json.loads(result)
-        memory_list.append(data)
+        any_data = json.loads(result)
+        any_info.append(any_data)
         self.send_response(201)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
-        response = {"POST request received!": data}
+        response = {"POST request received!": any_data}
         self.wfile.write(json.dumps(response).encode('utf-8'))
 
 
@@ -28,5 +28,6 @@ def run(server_class = HTTPServer,handler_class = SimpleRequestHandler,port=8000
     httpd = server_class(server_address,handler_class)
     print(f'server is running at port: {port}')
     httpd.serve_forever()
-
-run()
+    
+if __name__ == "__main__":
+    run()
