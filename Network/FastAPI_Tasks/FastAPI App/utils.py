@@ -14,7 +14,6 @@ PORT = int(os.environ.get("PORT"))
 HOST = os.environ.get("HOST")
 
 #functions for reading and writing JSON files
-
 async def read_file_json(file_name):
     """Read JSON data from a file."""
     try:

@@ -7,8 +7,8 @@ import aiofiles
 import dotenv
 import uvicorn
 from fastapi import FastAPI
-from modules import User
-from modules import Task
+from models import User
+from models import Task
 from errors import NotFoundError, FileError, ValidationError
 from utils import read_file_json, write_file_json, USERS_FILE,TASKS_FILE,HOST,PORT
 
