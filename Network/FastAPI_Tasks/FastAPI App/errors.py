@@ -1,4 +1,4 @@
-'''This is the errors modul'''
+'''This is a module for the errors'''
 
 from fastapi import HTTPException
 

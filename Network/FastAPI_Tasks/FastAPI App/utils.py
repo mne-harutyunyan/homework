@@ -1,4 +1,4 @@
-'''This is helper functions module.'''
+'''This is module for helper functions.'''
 
 import json
 import os

@@ -1,4 +1,4 @@
-'''This is the main modul'''
+'''This is the main module'''
 
 from contextlib import asynccontextmanager
 import json

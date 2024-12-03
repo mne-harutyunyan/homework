@@ -1,4 +1,4 @@
-'''This is modul for models'''
+'''This is a module for models'''
 from typing import Optional
 from pydantic import BaseModel,EmailStr,Field
 
