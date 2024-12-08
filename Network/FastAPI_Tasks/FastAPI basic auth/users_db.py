@@ -1,9 +1,8 @@
-import json 
-import os
-from passlib.context import CryptContext
+import json
 import time
-pwd_context = CryptContext(schemes="sha256_crypt")
+from passlib.context import CryptContext
 
+pwd_context = CryptContext(schemes="sha256_crypt")
 
 def read_data(file_name):
     """Read JSON data from a file."""
@@ -13,7 +12,7 @@ def read_data(file_name):
             return json.loads(content)
     except json.JSONDecodeError:
         with open(file_name, 'w') as fs:
-             fs.write(json.dumps({}, indent=2))
+            fs.write(json.dumps({}, indent=2))
         return {}
     except FileNotFoundError:
         with open(file_name, 'w') as fs:

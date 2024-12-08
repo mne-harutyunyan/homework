@@ -1,9 +1,9 @@
+import os
+import dotenv
+import uvicorn
 from fastapi import FastAPI, Request, Response, status, Depends, Cookie
 from fastapi.responses import HTMLResponse, RedirectResponse
-import dotenv
 from fastapi.templating import Jinja2Templates
-import os
-import uvicorn
 from models import User
 from auth import register, login, sessions, authenticate
 
@@ -14,7 +14,7 @@ templates = Jinja2Templates(directory=template)
 
 app = FastAPI()
 
-@app.get("/", response_class=HTMLResponse) 
+@app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
   return templates.TemplateResponse('login.html', {"request": request})
 
@@ -39,9 +39,10 @@ async def secure_page(request: Request, username: str=Depends(get_current_userna
   if username not in sessions:
     return RedirectResponse("/", status_code=status.HTTP_303_SEE_OTHER)
   return templates.TemplateResponse("secure.html", {"request": request, "username": username})
+
 @app.get("/logout")
 def logout_user(response: Response):
-  redirect_response = RedirectResponse(url="/", status_code=status.HTTP_301_MOVED_PERMANENTLY)
+  RedirectResponse(url="/", status_code=status.HTTP_301_MOVED_PERMANENTLY)
   response.delete_cookie('username')
 
 if __name__ == '__main__':

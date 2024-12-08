@@ -1,4 +1,3 @@
-
 from users_db import register_user,logger,current_time, authenticate_user
 from fastapi import HTTPException, status
 from fastapi.responses import RedirectResponse
